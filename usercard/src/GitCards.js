@@ -2,13 +2,12 @@ import React from 'react'
 
 function GitCards(props) {
 
-const { user } = props
-
     return(
-
-        <div>
-            {user}
-        </div>
+        <>
+          <h1>{props.user.login}</h1>
+            <img width={"60"} alt={"Profile Avatar"} src={props.user.avatar_url}/>
+            <h2>Currently Following {props.user.login}</h2>
+        </>
     )
 }
 

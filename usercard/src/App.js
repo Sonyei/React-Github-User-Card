@@ -2,6 +2,7 @@
 import React from 'react'
 import './App.css';
 import axios from 'axios'
+import GitCards from './GitCards'
 
 
 class App extends React.Component {
@@ -11,23 +12,22 @@ state = {
   followers: []
 }
 
-componentDidMount() {
-  axios
-    .get('https://api.github.com/users/Sonyei')
-    .then((res) =>{
-    console.log(res.data)
+ componentDidMount() {
+   axios
+    .get('https://api.github.com/users/sonyei')
+    .then(res =>
       this.setState({
       user: res.data
-        })
-      })
-      .catch(err => console.log(`This is the error -->`, err))
+        }))
+      .catch(err => console.log(err))
   axios
-    .get('https://api.github.com/users/Sonyei/followers')
-    .then((res) => {
-      return res
-      })
-      .catch(err => console.log(`This is the error -->`, err))
-}
+    .get('https://api.github.com/users/sonyei/followers')
+    .then(res =>
+      this.setState({
+      followers: res.data
+        }))
+      .catch(err => console.log(err))
+ }
 
 // parent component which controls everything
 // fetch data, set to state
@@ -41,12 +41,15 @@ render(){
 
   return (
     <div className="App">
-      <h1>{this.state.user.login}</h1>
-      <img width={"60"} alt={"Profile Avatar"} src={this.state.user.avatar_url}/>
-      <h3>Followers: {this.state.user.followers}</h3>
-    </div>
-   );
+      <GitCards user={this.state.user}/>
+            {this.state.followers.map(follower => (
+              <div className='card' key={follower.id}>
+              <img width={"45"} src={follower.avatar_url} alt={"follower profile image"}/>
+                <h3>User:{follower.login}</h3>
+              </div>
+            ))}
+      </div>
+   )}
   }
-}
 
 export default App;
