@@ -1,4 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda&family=Yusei+Magic&display=swap");
+
 body {
-    display: flex;
-    text-align: center;
+	display: flex;
+	flex-direction: column;
+	background: #4682b4;
+	width: 100%;
+	color: white;
+	margin: 0 5%;
+	box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: "Yusei Magic", sans-serif;
+}
+
+p,
+a {
+	font-family: "Bodoni Moda", serif;
+}
+
+.card-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.card-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.cards {
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	background: #0e1b2542;
+	margin: 2%;
+	width: 25%;
+	padding-top: 2%;
+	border: 2px solid white;
+	border-radius: 10px;
 }
